@@ -2,13 +2,17 @@
 import './App.css';
 import { Footer } from './Components/Footer';
 import Navbar from './Components/Navbar';
+import { ProductList } from './Components/Product/ProductList';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <div>
    <Navbar/>
-   <Footer/>
-    </div>
+   <ProductList/>
+   </div>
+   {/* <Footer/> */}
+    </>
   );
 }
 
