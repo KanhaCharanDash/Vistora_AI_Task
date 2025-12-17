@@ -9,7 +9,7 @@ import {
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
   return (
     <Paper
       elevation={1}
@@ -22,8 +22,8 @@ export const ProductCard = () => {
       {/* Image */}
       <Stack>
         <img
-          src="https://via.placeholder.com/300"
-          alt="Product"
+          src={product.thumbnail}
+          alt={product.title}
           style={{
             width: "100%",
             aspectRatio: "1 / 1",
@@ -37,7 +37,7 @@ export const ProductCard = () => {
         {/* Title & Wishlist */}
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" fontWeight={400}>
-            Sample Product
+            {product.title}
           </Typography>
 
           <Checkbox
@@ -46,11 +46,15 @@ export const ProductCard = () => {
           />
         </Stack>
 
-        <Typography color="text.secondary">Brand Name</Typography>
+        <Typography color="text.secondary">
+          {product.brand}
+        </Typography>
 
         {/* Price & Button */}
         <Stack direction="row" justifyContent="space-between" alignItems="center">
-          <Typography fontWeight={500}>$999</Typography>
+          <Typography fontWeight={500}>
+            ${product.price}
+          </Typography>
 
           <button
             style={{
@@ -68,9 +72,11 @@ export const ProductCard = () => {
         </Stack>
 
         {/* Stock Info */}
-        <FormHelperText error>
-          Only few items left
-        </FormHelperText>
+        {product.stock <= 20 && (
+          <FormHelperText error>
+            Only few items left
+          </FormHelperText>
+        )}
       </Stack>
     </Paper>
   );

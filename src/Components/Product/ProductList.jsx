@@ -20,8 +20,9 @@ import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ProductCard } from "./ProductCard .jsx";
 import { Footer } from "../Footer.jsx";
-
+import products from "../../constant.js";
 export const ProductList = () => {
+
   return (
     <>
       {/* Page Layout */}
@@ -99,13 +100,12 @@ export const ProductList = () => {
 
           {/* Product Grid */}
           <Grid container spacing={3} justifyContent="center">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </Grid>
+      {products.map((product) => (
+        <Grid item key={product.id}>
+          <ProductCard product={product} />
+        </Grid>
+      ))}
+    </Grid>
 
           {/* Pagination */}
           <Stack alignItems="center" spacing={2}>
