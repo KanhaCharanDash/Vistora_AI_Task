@@ -8,8 +8,13 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useCartStore } from "../../store/useCartStore";
 
-export const CartItem = () => {
+export const CartItem = ({ item }) => {
+  const { increaseQty, decreaseQty, removeFromCart } = useCartStore();
+
+  const { product, quantity } = item;
+
   return (
     <Paper elevation={1} sx={{ p: 2 }}>
       <Stack
@@ -21,23 +26,35 @@ export const CartItem = () => {
         <Stack direction="row" spacing={2} alignItems="center">
           <Stack width="120px" height="120px">
             <img
-              src="https://via.placeholder.com/150"
-              alt="Product"
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              src={product.thumbnail}
+              alt={product.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
             />
           </Stack>
 
           <Stack>
-            <Typography variant="h6">Sample Product</Typography>
-            <Typography color="text.secondary">Brand Name</Typography>
+            <Typography variant="h6">{product.title}</Typography>
+            <Typography color="text.secondary">
+              {product.brand}
+            </Typography>
 
             <Typography mt={1}>Quantity</Typography>
             <Stack direction="row" alignItems="center">
-              <IconButton>
+              <IconButton
+                onClick={() => decreaseQty(product.id)}
+              >
                 <RemoveIcon fontSize="small" />
               </IconButton>
-              <Typography>1</Typography>
-              <IconButton>
+
+              <Typography>{quantity}</Typography>
+
+              <IconButton
+                onClick={() => increaseQty(product.id)}
+              >
                 <AddIcon fontSize="small" />
               </IconButton>
             </Stack>
@@ -46,8 +63,15 @@ export const CartItem = () => {
 
         {/* Price & Remove */}
         <Stack alignItems="flex-end" rowGap="1rem">
-          <Typography>$60</Typography>
-          <Button variant="contained" size="small">
+          <Typography>
+            ${product.price * quantity}
+          </Typography>
+
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => removeFromCart(product.id)}
+          >
             Remove
           </Button>
         </Stack>

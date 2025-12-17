@@ -10,8 +10,13 @@ import Button from "@mui/material/Button";
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
+import { Link } from "react-router-dom";
+import { useCartStore } from "../store/useCartStore";
+import { useWishlistStore } from "../store/useWishlistStore";
 const Navbar = () => {
+  const total = useCartStore((state) => state.cartItems.length);
+  const likedItemsLenth = useWishlistStore((state) => state.likedItems.length);
+
   return (
     <AppBar
       position="sticky"
@@ -49,17 +54,19 @@ const Navbar = () => {
             Admin
           </Button>
 
-          <Badge badgeContent={2} color="error">
+          <Badge badgeContent={total} color="error">
             <IconButton>
-              <ShoppingCartOutlinedIcon />
+            <Link to="/cart">
+  <ShoppingCartOutlinedIcon />
+</Link>
             </IconButton>
           </Badge>
 
-          <Badge badgeContent={1} color="error">
-            <IconButton>
-              <FavoriteBorderIcon />
-            </IconButton>
-          </Badge>
+         <IconButton component={Link} to="/wishlist">
+  <Badge badgeContent={likedItemsLenth} color="error">
+    <FavoriteBorderIcon />
+  </Badge>
+</IconButton>
 
           <IconButton>
             <Avatar src="https://i.pravatar.cc/40" />

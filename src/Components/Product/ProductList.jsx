@@ -18,7 +18,7 @@ import { ProductCard } from "./ProductCard .jsx";
 import { Footer } from "../Footer.jsx";
 import products from "../../constant.js";
 import { useFilterStore } from "../../store/useFilterStore";
-
+import  Navbar  from "../Navbar.jsx"; 
 export const ProductList = () => {
   const {
     selectedBrands,
@@ -42,6 +42,7 @@ export const ProductList = () => {
 
   return (
     <>
+    <Navbar/>
       <Stack direction="row" alignItems="flex-start">
         {/* Sidebar */}
         <Stack
