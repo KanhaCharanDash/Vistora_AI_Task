@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Stack,
   Grid,
   Typography,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -21,30 +17,17 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { ProductCard } from "./ProductCard .jsx";
 import { Footer } from "../Footer.jsx";
 import products from "../../constant.js";
+import { useFilterStore } from "../../store/useFilterStore";
 
 export const ProductList = () => {
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const {
+    selectedBrands,
+    selectedCategories,
+    toggleBrand,
+    toggleCategory,
+    clearFilters,
+  } = useFilterStore();
 
-  // 🔹 Handle brand filter
-  const handleBrandChange = (brand) => {
-    setSelectedBrands((prev) =>
-      prev.includes(brand)
-        ? prev.filter((b) => b !== brand)
-        : [...prev, brand]
-    );
-  };
-
-  // 🔹 Handle category filter
-  const handleCategoryChange = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
-
-  // 🔹 Apply filters
   const filteredProducts = products.filter((product) => {
     const brandMatch =
       selectedBrands.length === 0 ||
@@ -73,14 +56,11 @@ export const ProductList = () => {
             overflowY: "auto",
           }}
         >
-          <Typography variant="h4">New Arrivals</Typography>
+          <Typography variant="h4">Filters</Typography>
 
           <IconButton
             sx={{ position: "absolute", top: 10, right: 10 }}
-            onClick={() => {
-              setSelectedBrands([]);
-              setSelectedCategories([]);
-            }}
+            onClick={clearFilters}
           >
             <ClearIcon />
           </IconButton>
@@ -98,7 +78,7 @@ export const ProductList = () => {
                     control={
                       <Checkbox
                         checked={selectedBrands.includes(brand)}
-                        onChange={() => handleBrandChange(brand)}
+                        onChange={() => toggleBrand(brand)}
                       />
                     }
                     label={brand}
@@ -115,16 +95,14 @@ export const ProductList = () => {
             </AccordionSummary>
             <AccordionDetails>
               <FormGroup>
-                {["beauty", "vegetables", "groceries", "accessories"].map(
+                {["beauty", "fragrances", "groceries", "furniture"].map(
                   (category) => (
                     <FormControlLabel
                       key={category}
                       control={
                         <Checkbox
                           checked={selectedCategories.includes(category)}
-                          onChange={() =>
-                            handleCategoryChange(category)
-                          }
+                          onChange={() => toggleCategory(category)}
                         />
                       }
                       label={category}
@@ -136,9 +114,8 @@ export const ProductList = () => {
           </Accordion>
         </Stack>
 
-        {/* Main Content */}
-        <Stack flex={1} p={3} rowGap={4}>
-          {/* Product Grid */}
+        {/* Products */}
+        <Stack flex={1} p={3}>
           <Grid container spacing={3} justifyContent="center">
             {filteredProducts.map((product) => (
               <Grid item key={product.id}>
@@ -147,11 +124,10 @@ export const ProductList = () => {
             ))}
           </Grid>
 
-          {/* Pagination (UI only) */}
-          <Stack alignItems="center" spacing={2}>
-            <Pagination count={5} variant="outlined" shape="rounded" />
+          <Stack alignItems="center" mt={3}>
+            <Pagination count={5} />
             <Typography>
-              Showing {filteredProducts.length} results
+              Showing {filteredProducts.length} products
             </Typography>
           </Stack>
         </Stack>
