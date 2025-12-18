@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export const Cart = ({ checkout = false }) => {
   const { cartItems } = useCartStore();
 
-  // 🔢 Dynamic calculations
+
   const totalItems = cartItems.reduce(
     (acc, item) => acc + item.quantity,
     0
@@ -20,7 +20,7 @@ export const Cart = ({ checkout = false }) => {
   );
 
   const SHIPPING = subtotal > 0 ? 10 : 0;
-  const TAX = subtotal * 0.05; // 5% tax
+  const TAX = subtotal * 0.05; 
   const TOTAL = subtotal + SHIPPING + TAX;
 
   return (
@@ -29,7 +29,6 @@ export const Cart = ({ checkout = false }) => {
 
       <Stack alignItems="center" mb="5rem">
         <Stack width="50rem" mt="3rem" px={2} rowGap={4}>
-          {/* Cart Items */}
           <Stack rowGap={2}>
             {cartItems.length === 0 ? (
               <Typography>Your cart is empty</Typography>
@@ -40,7 +39,6 @@ export const Cart = ({ checkout = false }) => {
             )}
           </Stack>
 
-          {/* Subtotal Section */}
           {cartItems.length > 0 && (
             <Stack
               direction="row"
@@ -93,7 +91,6 @@ export const Cart = ({ checkout = false }) => {
             </Stack>
           )}
 
-          {/* Actions */}
           {!checkout && cartItems.length > 0 && (
             <Stack rowGap="1rem">
               <Button variant="contained">Checkout</Button>

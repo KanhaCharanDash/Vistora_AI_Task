@@ -23,7 +23,7 @@ export const ProductList = () => {
   const {
     selectedBrands,
     selectedCategories,
-    toggleBrand,
+   
     toggleCategory,
     clearFilters,
   } = useFilterStore();
@@ -44,7 +44,6 @@ export const ProductList = () => {
     <>
     <Navbar/>
       <Stack direction="row" alignItems="flex-start">
-        {/* Sidebar */}
         <Stack
           sx={{
             width: "300px",
@@ -66,30 +65,7 @@ export const ProductList = () => {
             <ClearIcon />
           </IconButton>
 
-          {/* Brand Filter */}
-          <Accordion sx={{ mt: 3 }}>
-            <AccordionSummary expandIcon={<AddIcon />}>
-              <Typography>Brands</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FormGroup>
-                {["Essence", "Nike", "Adidas", "Puma"].map((brand) => (
-                  <FormControlLabel
-                    key={brand}
-                    control={
-                      <Checkbox
-                        checked={selectedBrands.includes(brand)}
-                        onChange={() => toggleBrand(brand)}
-                      />
-                    }
-                    label={brand}
-                  />
-                ))}
-              </FormGroup>
-            </AccordionDetails>
-          </Accordion>
 
-          {/* Category Filter */}
           <Accordion sx={{ mt: 2 }}>
             <AccordionSummary expandIcon={<AddIcon />}>
               <Typography>Categories</Typography>
@@ -115,7 +91,6 @@ export const ProductList = () => {
           </Accordion>
         </Stack>
 
-        {/* Products */}
         <Stack flex={1} p={3}>
           <Grid container spacing={3} justifyContent="center">
             {filteredProducts.map((product) => (

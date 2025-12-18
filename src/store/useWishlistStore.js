@@ -6,7 +6,6 @@ export const useWishlistStore = create(
     (set, get) => ({
       likedItems: [],
 
-      // ❤️ Toggle like / unlike
       toggleLike: (product) => {
         const items = get().likedItems;
         const exists = items.find((p) => p.id === product.id);
@@ -22,7 +21,6 @@ export const useWishlistStore = create(
         }
       },
 
-      // ❌ Remove explicitly
       removeLike: (productId) =>
         set((state) => ({
           likedItems: state.likedItems.filter(
@@ -30,11 +28,10 @@ export const useWishlistStore = create(
           ),
         })),
 
-      // 🧹 Clear wishlist
       clearWishlist: () => set({ likedItems: [] }),
     }),
     {
-      name: "wishlist-storage", // localStorage key
+      name: "wishlist-storage", 
     }
   )
 );

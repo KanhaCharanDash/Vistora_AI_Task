@@ -6,7 +6,6 @@ export const useCartStore = create(
     (set, get) => ({
       cartItems: [],
 
-      // ✅ Add item to cart
       addToCart: (product) => {
         const items = get().cartItems;
         const existing = items.find(
@@ -28,7 +27,6 @@ export const useCartStore = create(
         }
       },
 
-      // ➕ Increase quantity
       increaseQty: (productId) =>
         set((state) => ({
           cartItems: state.cartItems.map((item) =>
@@ -38,7 +36,6 @@ export const useCartStore = create(
           ),
         })),
 
-      // ➖ Decrease quantity
       decreaseQty: (productId) =>
         set((state) => ({
           cartItems: state.cartItems
@@ -50,7 +47,6 @@ export const useCartStore = create(
             .filter((item) => item.quantity > 0),
         })),
 
-      // ❌ Remove item completely
       removeFromCart: (productId) =>
         set((state) => ({
           cartItems: state.cartItems.filter(
@@ -58,11 +54,10 @@ export const useCartStore = create(
           ),
         })),
 
-      // 🧹 Clear cart
       clearCart: () => set({ cartItems: [] }),
     }),
     {
-      name: "cart-storage", // localStorage key
+      name: "cart-storage",
     }
   )
 );

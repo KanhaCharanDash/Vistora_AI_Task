@@ -22,7 +22,6 @@ export const CartItem = ({ item }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        {/* Image & Details */}
         <Stack direction="row" spacing={2} alignItems="center">
           <Stack width="120px" height="120px">
             <img
@@ -61,7 +60,6 @@ export const CartItem = ({ item }) => {
           </Stack>
         </Stack>
 
-        {/* Price & Remove */}
         <Stack alignItems="flex-end" rowGap="1rem">
           <Typography>
             ${product.price * quantity}

@@ -2,8 +2,7 @@ import React from "react";
 import { Box, IconButton, TextField, Typography, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-// replace with your actual image paths
-const {
+import {
   QRCodePng,
   appStorePng,
   googlePlayPng,
@@ -11,7 +10,7 @@ const {
   instagramPng,
   twitterPng,
   linkedinPng,
-} =[]
+} from "./images";
 
 export const Footer = () => {
   return (
@@ -26,14 +25,14 @@ export const Footer = () => {
         color: "#f8fafc",
       }}
     >
-      {/* Upper Section */}
+
       <Stack
         direction="row"
         flexWrap="wrap"
         justifyContent="space-around"
         rowGap="2rem"
       >
-        {/* Subscribe */}
+     
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6" fontSize="1.5rem">
             Exclusive
@@ -59,7 +58,7 @@ export const Footer = () => {
           />
         </Stack>
 
-        {/* Support */}
+
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6">Support</Typography>
           <Typography fontWeight={300}>
@@ -69,7 +68,7 @@ export const Footer = () => {
           <Typography fontWeight={300}>+88015-88888-9999</Typography>
         </Stack>
 
-        {/* Account */}
+       
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6">Account</Typography>
           <Typography fontWeight={300}>My Account</Typography>
@@ -79,7 +78,7 @@ export const Footer = () => {
           <Typography fontWeight={300}>Shop</Typography>
         </Stack>
 
-        {/* Quick Links */}
+       
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6">Quick Links</Typography>
           <Typography fontWeight={300}>Privacy Policy</Typography>
@@ -88,7 +87,6 @@ export const Footer = () => {
           <Typography fontWeight={300}>Contact</Typography>
         </Stack>
 
-        {/* App Download */}
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6">Download App</Typography>
           <Typography fontWeight={500} color="gray">
@@ -120,7 +118,7 @@ export const Footer = () => {
             </Stack>
           </Stack>
 
-          {/* Social Icons */}
+     
           <Stack direction="row" columnGap="2rem" mt={1}>
             <img src={facebookPng} alt="Facebook" />
             <img src={twitterPng} alt="Twitter" />
@@ -130,7 +128,7 @@ export const Footer = () => {
         </Stack>
       </Stack>
 
-      {/* Lower Section */}
+     
       <Stack alignSelf="center">
         <Typography color="GrayText">
           © Mern Store 2025. All rights reserved

@@ -35,7 +35,6 @@ const Navbar = () => {
           px: 3,
         }}
       >
-        {/* Logo */}
         <Typography
           variant="h6"
           sx={{
@@ -46,7 +45,6 @@ const Navbar = () => {
           MERN SHOP
         </Typography>
 
-        {/* Right Section */}
         <Stack direction="row" alignItems="center" spacing={2}>
           <Typography fontWeight={300}>Hey 👋 User</Typography>
 

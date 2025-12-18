@@ -28,7 +28,7 @@ export const useFilterStore = create(
         }),
     }),
     {
-      name: "product-filters", // localStorage key
+      name: "product-filters", 
     }
   )
 );

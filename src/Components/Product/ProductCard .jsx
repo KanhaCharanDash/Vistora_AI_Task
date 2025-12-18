@@ -17,23 +17,19 @@ import { useWishlistStore } from "../../store/useWishlistStore";
 export const ProductCard = ({ product }) => {
   const { cartItems, addToCart, increaseQty, decreaseQty } = useCartStore();
 
-  // ✅ READ likedItems also
   const { likedItems, toggleLike } = useWishlistStore();
 
-  // 🔍 Check cart quantity
   const cartItem = cartItems.find(
     (item) => item.product.id === product.id
   );
   const quantity = cartItem ? cartItem.quantity : 0;
 
-  // 🔍 Check if product is liked
   const isLiked = likedItems.some(
     (item) => item.id === product.id
   );
 
   return (
     <Paper elevation={1} sx={{ width: "280px", p: "1rem" }}>
-      {/* Image */}
       <img
         src={product.thumbnail}
         alt={product.title}
@@ -45,13 +41,11 @@ export const ProductCard = ({ product }) => {
       />
 
       <Stack spacing={2} mt={2}>
-        {/* Title & Wishlist */}
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h6" fontWeight={400}>
             {product.title}
           </Typography>
 
-          {/* ✅ CONTROLLED CHECKBOX */}
           <Checkbox
             checked={isLiked}
             onChange={() => toggleLike(product)}
@@ -64,7 +58,6 @@ export const ProductCard = ({ product }) => {
           {product.brand}
         </Typography>
 
-        {/* Price + Cart Controls */}
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography fontWeight={500}>
             ${product.price}
@@ -106,7 +99,6 @@ export const ProductCard = ({ product }) => {
           )}
         </Stack>
 
-        {/* Stock Info */}
         {product.stock <= 20 && (
           <FormHelperText error>
             Only few items left
