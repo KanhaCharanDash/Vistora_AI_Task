@@ -109,7 +109,7 @@ export const ProductList = () => {
         </Stack>
       </Stack>
 
-      <Footer />
+
     </>
   );
 };

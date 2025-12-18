@@ -35,15 +35,20 @@ const Navbar = () => {
           px: 3,
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 700,
-            letterSpacing: ".3rem",
-          }}
-        >
-          MERN SHOP
-        </Typography>
+  <Typography
+  component={Link}
+  to="/"
+  variant="h6"
+  sx={{
+    fontWeight: 700,
+    letterSpacing: ".3rem",
+    textDecoration: "none",
+    color: "inherit",
+    cursor: "pointer",
+  }}
+>
+  MERN SHOP
+</Typography>
 
         <Stack direction="row" alignItems="center" spacing={2}>
           <Typography fontWeight={300}>Hey 👋 User</Typography>

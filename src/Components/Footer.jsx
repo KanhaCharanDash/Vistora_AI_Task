@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, IconButton, TextField, Typography, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-
+import { Link } from "react-router-dom";
 import {
   QRCodePng,
   appStorePng,
@@ -62,21 +62,62 @@ export const Footer = () => {
         <Stack rowGap="1rem" padding="1rem">
           <Typography variant="h6">Support</Typography>
           <Typography fontWeight={300}>
-            11th Main Street, Dhaka, CA 1515
+            OUTR, Bhubaneswar
           </Typography>
-          <Typography fontWeight={300}>exclusive@gmail.com</Typography>
-          <Typography fontWeight={300}>+88015-88888-9999</Typography>
+          <Typography fontWeight={300}>kanhacharandash111@gmail.com</Typography>
+          <Typography fontWeight={300}>+91 8144286284</Typography>
         </Stack>
 
        
-        <Stack rowGap="1rem" padding="1rem">
-          <Typography variant="h6">Account</Typography>
-          <Typography fontWeight={300}>My Account</Typography>
-          <Typography fontWeight={300}>Login / Register</Typography>
-          <Typography fontWeight={300}>Cart</Typography>
-          <Typography fontWeight={300}>Wishlist</Typography>
-          <Typography fontWeight={300}>Shop</Typography>
-        </Stack>
+      <Stack rowGap="1rem" padding="1rem">
+  <Typography variant="h6">Account</Typography>
+
+  <Typography
+    component={Link}
+    to="/account"
+    fontWeight={300}
+    sx={{ textDecoration: "none", color: "inherit" }}
+  >
+    My Account
+  </Typography>
+
+  <Typography
+    component={Link}
+    to="/login"
+    fontWeight={300}
+    sx={{ textDecoration: "none", color: "inherit" }}
+  >
+    Login / Register
+  </Typography>
+
+  <Typography
+    component={Link}
+    to="/cart"
+    fontWeight={300}
+    sx={{ textDecoration: "none", color: "inherit" }}
+  >
+    Cart
+  </Typography>
+
+  <Typography
+    component={Link}
+    to="/wishlist"
+    fontWeight={300}
+    sx={{ textDecoration: "none", color: "inherit" }}
+  >
+    Wishlist
+  </Typography>
+
+  <Typography
+    component={Link}
+    to="/"
+    fontWeight={300}
+    sx={{ textDecoration: "none", color: "inherit" }}
+  >
+    Shop
+  </Typography>
+</Stack>
+
 
        
         <Stack rowGap="1rem" padding="1rem">
@@ -119,12 +160,40 @@ export const Footer = () => {
           </Stack>
 
      
-          <Stack direction="row" columnGap="2rem" mt={1}>
-            <img src={facebookPng} alt="Facebook" />
-            <img src={twitterPng} alt="Twitter" />
-            <img src={instagramPng} alt="Instagram" />
-            <img src={linkedinPng} alt="LinkedIn" />
-          </Stack>
+       <Stack direction="row" columnGap="2rem" mt={1}>
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={facebookPng} alt="Facebook" style={{ cursor: "pointer" }} />
+  </a>
+
+  <a
+    href="https://twitter.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={twitterPng} alt="Twitter" style={{ cursor: "pointer" }} />
+  </a>
+
+  <a
+    href="https://www.instagram.com/kanhacharandash/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={instagramPng} alt="Instagram" style={{ cursor: "pointer" }} />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/kanha-charan-dash/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img src={linkedinPng} alt="LinkedIn" style={{ cursor: "pointer" }} />
+  </a>
+</Stack>
+
         </Stack>
       </Stack>
 

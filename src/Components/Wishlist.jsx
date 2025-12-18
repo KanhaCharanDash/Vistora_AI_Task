@@ -30,7 +30,6 @@ export const Wishlist = () => {
         )}
       </Stack>
 
-      <Footer />
     </>
   );
 };
